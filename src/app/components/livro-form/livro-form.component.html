@@ -1,0 +1,106 @@
+<div class="container mt-4">
+    <form (ngSubmit)="salvarLivro()">
+      <!-- ID do Livro -->
+      <div class="form-group">
+        <label for="id" class="form-label">ID</label>
+        <input type="number" id="id" [(ngModel)]="livro.id" name="id" class="form-control" [disabled]="editMode" />
+      </div>
+  
+      <!-- Nome do Livro -->
+      <div class="form-group">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" id="nome" [(ngModel)]="livro.nome" name="nome" class="form-control" required />
+      </div>
+  
+      <!-- Autor do Livro -->
+      <div class="form-group">
+        <label for="autor" class="form-label">Autor</label>
+        <input type="text" id="autor" [(ngModel)]="livro.autor" name="autor" class="form-control" required />
+      </div>
+  
+      <!-- Editora do Livro -->
+      <div class="form-group">
+        <label for="editora" class="form-label">Editora</label>
+        <input type="text" id="editora" [(ngModel)]="livro.editora" name="editora" class="form-control" required />
+      </div>
+  
+      <!-- Capa do Livro -->
+      <div class="form-group">
+        <label for="capa" class="form-label">Capa</label>
+        <input type="file" id="capa" (change)="onFileSelected($event)" class="form-control" required />
+      </div>
+  
+      <!-- ISBN-10 -->
+      <div class="form-group">
+        <label for="isbn10" class="form-label">ISBN 10</label>
+        <input type="text" id="isbn10" [(ngModel)]="livro.isbn10" name="isbn10" class="form-control" required />
+      </div>
+  
+      <!-- ISBN-13 -->
+      <div class="form-group">
+        <label for="isbn13" class="form-label">ISBN 13</label>
+        <input type="text" id="isbn13" [(ngModel)]="livro.isbn13" name="isbn13" class="form-control" required />
+      </div>
+  
+      <!-- Data de Publicação -->
+      <div class="form-group">
+        <label for="dataPublicacao" class="form-label">Data de Publicação</label>
+        <input type="date" id="dataPublicacao" [(ngModel)]="livro.dataPublicacao" name="dataPublicacao"
+          class="form-control" required />
+      </div>
+  
+      <!-- Botões -->
+      <div class="form-group d-flex justify-content-between mt-4">
+        <button type="submit" class="btn btn-primary w-48">Salvar</button>
+        <button type="button" class="btn btn-secondary w-48" (click)="router.navigate(['/livros'])">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Estilo Personalizado -->
+  <style>
+    .form-label {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #495057;
+    }
+  
+    .form-control {
+      border-radius: 0.375rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s ease;
+    }
+  
+    .form-control:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+    }
+  
+    .btn {
+      transition: transform 0.2s ease-in-out;
+    }
+  
+    .btn:hover {
+      transform: scale(1.05);
+    }
+  
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+  
+    .btn-secondary {
+      background-color: #6c757d;
+      border-color: #6c757d;
+    }
+  
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  
+    .w-48 {
+      width: 48%;
+    }
+  </style>
+  

@@ -1,0 +1,29 @@
+body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h1, h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: center;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  .alert {
+    margin-top: 20px;
+  }
+  

@@ -1,0 +1,163 @@
+button {
+  margin-right: 10px;
+}
+
+/* Tornando a tabela responsiva */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Centralizar conteúdo */
+.table th,
+.table td {
+  vertical-align: middle;
+  padding: 15px 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Responsividade dos botões */
+.btn {
+  transition: background-color 0.3s, color 0.3s, transform 0.2s ease-in-out;
+  padding: 10px 15px;
+  font-size: 14px;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Ajustes para ícones */
+.bi {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+/* Responsividade dos botões e layout em telas menores */
+@media (max-width: 768px) {
+
+  .table th,
+  .table td {
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+
+  .btn {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .bi {
+    font-size: 18px;
+  }
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.container-fluid {
+  height: 100vh;
+}
+/* Modal Backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* Garantir que o modal esteja acima de outros elementos */
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Modal Dialog */
+.modal-dialog {
+  background-color: #fff;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Animação para o modal */
+@keyframes slideIn {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Modal Header */
+.modal-header {
+  background-color: #007bff;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 15px;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.modal-header .btn-close {
+  color: white;
+  font-size: 1.5em;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 20px;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Modal Footer */
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #f8f9fa;
+}
+
+.modal-footer button {
+  font-size: 1.1em;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Botão de Cancelar */
+.modal-footer .btn-secondary {
+  background-color: #ccc;
+  border-color: #ccc;
+}
+
+/* Botão de Deletar */
+.modal-footer .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+/* Efeitos de Hover para os botões */
+.modal-footer button:hover {
+  background-color: #0056b3;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Estilos adicionais */
+.modal-footer .btn-danger:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+}

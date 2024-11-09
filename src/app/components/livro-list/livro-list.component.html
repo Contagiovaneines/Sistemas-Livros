@@ -1,0 +1,78 @@
+<div class="container-fluid vh-100 d-flex flex-column">
+  <h2 class="text-center text-primary mb-4">Lista de Livros</h2>
+
+  <!-- Barra de Pesquisa e Botão de Adicionar -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+      <input type="text" [(ngModel)]="pesquisa" placeholder="Pesquisar livro..." class="form-control w-75 shadow-sm" />
+      <button class="btn btn-success w-25 shadow-sm" (click)="adicionarLivro()">Adicionar Livro</button>
+  </div>
+
+  <!-- Tabela de Livros -->
+  <div class="table-responsive flex-fill">
+      <table class="table table-striped table-hover w-100">
+          <thead class="bg-primary text-white text-center">
+              <tr>
+                  <th>Capa</th>
+                  <th>Nome</th>
+                  <th>Autor</th>
+                  <th>Editora</th>
+                  <th>ISBN-10</th>
+                  <th>ISBN-13</th>
+                  <th>Data de Publicação</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let livro of livros | filter:pesquisa" class="text-center">
+                  <td>
+                      <img *ngIf="livro.capa" [src]="livro.capa" alt="Capa do livro" class="img-fluid rounded" style="max-width: 100px; height: auto;" />
+                      <input *ngIf="!livro.capa" type="file" (change)="onFileChange($event, livro)" class="form-control" />
+                  </td>
+                  <td>{{ livro.nome }}</td>
+                  <td>{{ livro.autor }}</td>
+                  <td>{{ livro.editora }}</td>
+                  <td>{{ livro.isbn10 }}</td>
+                  <td>{{ livro.isbn13 }}</td>
+                  <td>{{ livro.dataPublicacao | date:'dd/MM/yyyy' }}</td>
+                  <td>{{ livro.status || 'Disponível' }}</td>
+                  <td class="text-center">
+                      <div class="btn-group" role="group">
+                          <button class="btn btn-primary btn-sm" (click)="editarLivro(livro)">
+                              <i class="bi bi-pencil-fill"></i> Editar
+                          </button>
+                          <button class="btn btn-danger btn-sm" (click)="confirmarDelecao(livro.id)">
+                              <i class="bi bi-trash-fill"></i> Deletar
+                          </button>
+                          <button class="btn btn-sm"
+                                  [ngClass]="livro.status === 'Emprestado' ? 'btn-warning' : 'btn-info'"
+                                  (click)="livro.status === 'Emprestado' ? devolverLivro(livro) : emprestarLivro(livro)">
+                              <i [ngClass]="livro.status === 'Emprestado' ? 'bi bi-arrow-left-circle-fill' : 'bi bi-arrow-right-circle-fill'"></i> 
+                              {{ livro.status === 'Emprestado' ? 'Devolver' : 'Emprestar' }}
+                          </button>
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+
+  <!-- Modal de Confirmação de Deleção -->
+  <div *ngIf="mostrarAlerta" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmação de Exclusão</h5>
+          <button type="button" class="btn-close" (click)="cancelarDelecao()"></button>
+        </div>
+        <div class="modal-body">
+          <p>Tem certeza que deseja deletar este livro?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="cancelarDelecao()">Cancelar</button>
+          <button type="button" class="btn btn-danger" (click)="deletarLivro(confirmarId)">Deletar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
